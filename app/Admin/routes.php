@@ -13,5 +13,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('admin.home');
     $router->resource('products', 'ProductsController');
-    $router->resource('product-brands', 'ProductsBarnds');
+    $router->resource('product-brands', 'ProductsBrands');
 });
