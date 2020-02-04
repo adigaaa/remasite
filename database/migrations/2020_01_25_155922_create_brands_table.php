@@ -13,10 +13,13 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_brands', function (Blueprint $table) {
+        Schema::create('brands', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->text('logo');
+            $table->unsignedInteger('type_id');
+
+            $table->foreign('type_id')->references('id')->on('types');
             $table->timestamps();
         });
     }

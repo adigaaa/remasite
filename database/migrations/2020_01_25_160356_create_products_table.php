@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('long_description');
             $table->text('short_description');
-            $table->unsignedInteger('type_id');
             $table->unsignedInteger('brand_id');
+            $table->unsignedInteger('market_id');
             $table->enum('in_stock',['1','0']);
             $table->double('amount');
             $table->double('discount');
@@ -27,8 +27,8 @@ class CreateProductsTable extends Migration
             $table->integer('views')->default('0');
             $table->timestamps();
 
-            $table->foreign('type_id')->references('id')->on('product_types');
-            $table->foreign('brand_id')->references('id')->on('product_brands');
+            $table->foreign('market_id')->references('id')->on('markets');
+            $table->foreign('brand_id')->references('id')->on('brands');
 
         });
     }

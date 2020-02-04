@@ -12,7 +12,6 @@ class Product extends Model
         'name',
         'long_description',
         'short_description',
-        'type_id',
         'brand_id',
         'in_stock',
         'amount',

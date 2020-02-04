@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServiceCalendarsTable extends Migration
+class CreateProductTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateServiceCalendarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('services_calendar', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            $table->time('duration');
-            $table->unsignedInteger('product_id');
+            $table->string('name');
+            $table->text('image');
             $table->timestamps();
-
-            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateServiceCalendarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_calendars');
+        Schema::dropIfExists('product_types');
     }
 }

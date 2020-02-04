@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Product;
+use App\Type;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -78,17 +79,20 @@ class ProductsController extends AdminController
     protected function form()
     {
         $form = new Form(new Product());
-
         $form->text('name', __('Name'));
         $form->textarea('long_description', __('Long description'));
         $form->textarea('short_description', __('Short description'));
-        $form->number('type_id', __('Type id'));
+
         $form->number('brand_id', __('Brand id'));
-        $form->text('in_stock', __('In stock'));
+        $states = [
+            'on' => ['value' => '1', 'text' => 'In stock', 'color' => 'primary'],
+            'off' => ['value' => '0', 'text' => 'Out of stock', 'color' => 'default'],
+        ];
+        $form->switch('in_stock', __('In stock'))->states($states);
         $form->decimal('amount', __('Amount'));
         $form->decimal('discount', __('Discount'));
         $form->number('quantity', __('Quantity'));
-        $form->number('views', __('Views'));
+        $form->multipleImage('image');
 
         return $form;
     }
